@@ -1,5 +1,5 @@
-using GP.API.MassTransitAzure.Messages;
-using MassTransit;
+using GP.LIB.Messages.Interface;
+using GP.MSG.MassTransitAzureBus;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GP.API.MassTransitAzureBus.Controllers
@@ -8,21 +8,23 @@ namespace GP.API.MassTransitAzureBus.Controllers
     [Route("[controller]")]
     public class PersonController : ControllerBase
     {
-        private readonly IPublishEndpoint _publishEndpoint;
         private readonly ILogger<PersonController> _logger;
-        
-        public PersonController(ILogger<PersonController> logger, IPublishEndpoint publishEndpoint)
+        private readonly IPersonMessagePublisher _personMessagePublisher;
+
+        public PersonController(IPersonMessagePublisher personMessagePublisher, ILogger<PersonController> logger)
         {
+            _personMessagePublisher = personMessagePublisher;
             _logger = logger;
-            _publishEndpoint = publishEndpoint;
         }
 
         [HttpPost()]
         public async Task<IActionResult> Post([FromBody] PersonMessage personMessage)
         {
-            await _publishEndpoint.Publish(personMessage);
-            return Ok(new { Message = "Person message published successfully." });
+            _logger.LogInformation("Received person message: {@PersonMessage}", personMessage);
 
+            await _personMessagePublisher.PublishAsync(personMessage);
+
+            return Ok(new { Message = "Person message published successfully." });
         }
     }
 }

@@ -5,6 +5,12 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GP.API.MassTransitAzureBus", "GP.API.MassTransitAzureBus\GP.API.MassTransitAzureBus.csproj", "{14155890-464D-42B6-99B3-AD5A931BC230}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GP.LIB.Messages", "GP.LIB.Messages\GP.LIB.Messages.csproj", "{062A31A2-459F-4651-8C39-C4D3DD29497A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GP.MSG.MassTransitAzureBus", "GP.MSG.MassTransitAzureBus\GP.MSG.MassTransitAzureBus.csproj", "{206686E1-CB78-40DF-BA37-E594E3E08449}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GP.LIB.Messages.Test", "GP.LIB.Messages.Test\GP.LIB.Messages.Test.csproj", "{417BA44B-F297-478C-8D01-45753C4102D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{14155890-464D-42B6-99B3-AD5A931BC230}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14155890-464D-42B6-99B3-AD5A931BC230}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14155890-464D-42B6-99B3-AD5A931BC230}.Release|Any CPU.Build.0 = Release|Any CPU
+		{062A31A2-459F-4651-8C39-C4D3DD29497A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{062A31A2-459F-4651-8C39-C4D3DD29497A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{062A31A2-459F-4651-8C39-C4D3DD29497A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{062A31A2-459F-4651-8C39-C4D3DD29497A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{206686E1-CB78-40DF-BA37-E594E3E08449}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{206686E1-CB78-40DF-BA37-E594E3E08449}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{206686E1-CB78-40DF-BA37-E594E3E08449}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{206686E1-CB78-40DF-BA37-E594E3E08449}.Release|Any CPU.Build.0 = Release|Any CPU
+		{417BA44B-F297-478C-8D01-45753C4102D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{417BA44B-F297-478C-8D01-45753C4102D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{417BA44B-F297-478C-8D01-45753C4102D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{417BA44B-F297-478C-8D01-45753C4102D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

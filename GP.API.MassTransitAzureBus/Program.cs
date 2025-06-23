@@ -1,20 +1,23 @@
-using Microsoft.Extensions.Configuration;
 using GP.API.MassTransitAzureBus.Consumer;
+using GP.LIB.Messages.Impl;
+using GP.LIB.Messages.Interface;
 using MassTransit;
-
-var builder = WebApplication.CreateBuilder(args);
-
 
 var config = new ConfigurationBuilder()
  .SetBasePath(AppContext.BaseDirectory)
  .AddJsonFile("appsettings.json", optional: false)
+ .AddUserSecrets<Program>()
  .Build();
 string azureServiceBusConnectionString = config["AzureServiceBus:ConnnectionString"];
 
-// Add services to the container.
+var builder = WebApplication.CreateBuilder(args);
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<IPersonMessagePublisher, PersonMessagePublisher>();
+builder.Services.AddScoped<IPersonMessageConsumer, PersonMessageConsumer>();
 
 builder.Services.AddMassTransit(x =>
 {
@@ -34,8 +37,12 @@ builder.Services.AddMassTransit(x =>
 // Pour démarrer le bus automatiquement
 builder.Services.AddMassTransitHostedService(); 
 
-
 var app = builder.Build();
+
+app.UseHttpsRedirection();  // HTTPS redirection middleware
+app.UseAuthorization();     // Authorization middleware 
+app.MapControllers();       // Map controllers to routes
+app.UseRouting();           // Enable routing
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -44,7 +51,4 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
-app.UseAuthorization();
-app.MapControllers();
 app.Run();

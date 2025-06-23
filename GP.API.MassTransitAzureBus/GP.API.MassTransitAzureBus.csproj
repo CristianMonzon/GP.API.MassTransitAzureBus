@@ -15,4 +15,9 @@
 	  
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GP.LIB.Messages\GP.LIB.Messages.csproj" />
+    <ProjectReference Include="..\GP.MSG.MassTransitAzureBus\GP.MSG.MassTransitAzureBus.csproj" />
+  </ItemGroup>
+
 </Project>
