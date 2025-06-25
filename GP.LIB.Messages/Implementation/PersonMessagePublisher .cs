@@ -3,7 +3,7 @@ using GP.MSG.MassTransitAzureBus;
 using MassTransit;
 using Microsoft.Extensions.Logging;
 
-namespace GP.LIB.Messages.Impl
+namespace GP.LIB.Messages.Implementation
 {
     public class PersonMessagePublisher : IPersonMessagePublisher
     {

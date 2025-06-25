@@ -4,15 +4,15 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>aa4e77b4-44ae-46ca-a915-225aef207ffd</UserSecretsId>
+    <UserSecretsId>f7aedf1f-4dbd-4aa3-ad81-9a2ed06fd17c</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
-	  <PackageReference Include="MassTransit.Azure.ServiceBus.Core" Version="8.5.0" />
+    <PackageReference Include="MassTransit.Azure.ServiceBus.Core" Version="8.5.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.1.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.6" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.1" />	  <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.6" />
-	  
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="9.0.6" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
   <ItemGroup>

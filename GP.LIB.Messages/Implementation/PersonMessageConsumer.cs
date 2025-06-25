@@ -2,7 +2,7 @@
 using GP.LIB.Messages.Interface;
 using Microsoft.Extensions.Logging;
 
-namespace GP.LIB.Messages.Impl
+namespace GP.LIB.Messages.Implementation
 {
     public class PersonMessageConsumer : IPersonMessageConsumer
     {

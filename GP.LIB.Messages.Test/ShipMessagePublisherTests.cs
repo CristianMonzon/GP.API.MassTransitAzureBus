@@ -3,33 +3,28 @@ using MassTransit;
 using Microsoft.Extensions.Logging;
 using NSubstitute;
 using GP.LIB.Messages.Interface;
-using GP.LIB.Messages.Impl;
+using GP.LIB.Messages.Implementation;
 
 namespace GP.API.Tests
 {
-    public class PersonMessagePublisherTests
+    public class ShipMessagePublisherTests
     {
         private readonly IPublishEndpoint publishEndpoint;
-        private readonly ILogger<PersonMessagePublisher> logger;
-        private readonly IPersonMessagePublisher publisher;
+        private readonly ILogger<MessagePublisher> logger;
+        private readonly IMessagePublisher publisher;
 
-        public PersonMessagePublisherTests()
+        public ShipMessagePublisherTests()
         {
             publishEndpoint = Substitute.For<IPublishEndpoint>();
-            logger = Substitute.For<ILogger<PersonMessagePublisher>>();
-            publisher = new PersonMessagePublisher(publishEndpoint, logger);
+            logger = Substitute.For<ILogger<MessagePublisher>>();
+            publisher = new MessagePublisher(publishEndpoint, logger);
         }
 
         [Fact]
         public async Task PublishAsync_ShouldCallPublishOnEndpoint()
         {
             // Arrange
-            var message = new PersonMessage
-            {
-                FirstName = "Cristian",
-                LastName = "Monzon",
-                BirthDay = new DateTime(1945, 6, 5)
-            };
+            var message = new ShipMessage();            
 
             // Act
             await publisher.PublishAsync(message);
@@ -39,4 +34,4 @@ namespace GP.API.Tests
         }
     }
 }
-   
+  

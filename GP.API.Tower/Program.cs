@@ -1,5 +1,7 @@
-using GP.API.MassTransitAzureBus.Consumer;
-using GP.LIB.Messages.Impl;
+using GP.API.Tower.Consumer;
+using GP.API.Tower.Services;
+using GP.API.Tower.Services.Implementation;
+using GP.LIB.Messages.Implementation;
 using GP.LIB.Messages.Interface;
 using MassTransit;
 
@@ -16,20 +18,20 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<IPersonMessagePublisher, PersonMessagePublisher>();
-builder.Services.AddScoped<IPersonMessageConsumer, PersonMessageConsumer>();
+builder.Services.AddScoped<IMessagePublisher, MessagePublisher>();
+builder.Services.AddScoped<IShipPositionUpdatedConsumer, ShipPositionUpdatedConsumer>();
 
 builder.Services.AddMassTransit(x =>
 {
-    x.AddConsumer<PersonConsumer>();
+    x.AddConsumer<ShipConsumer>();
 
     x.UsingAzureServiceBus((context, cfg) =>
     {
         cfg.Host(azureServiceBusConnectionString);
 
-        cfg.ReceiveEndpoint("_GP.API.Person-Queue", e =>
+        cfg.ReceiveEndpoint("_GP.API.Tower-Queue", e =>
         {
-            e.ConfigureConsumer<PersonConsumer>(context);
+            e.ConfigureConsumer<ShipConsumer>(context);
         });
     });
 });

@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Dto\PersonMessageDto.cs" />
+    <Compile Remove="Implementation\PersonMessageConsumer.cs" />
+    <Compile Remove="Implementation\PersonMessagePublisher .cs" />
+    <Compile Remove="Interface\IPersonMessageConsumer.cs" />
+    <Compile Remove="Interface\IPersonMessagePublisher.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MassTransit" Version="8.5.0" />
   </ItemGroup>
 
