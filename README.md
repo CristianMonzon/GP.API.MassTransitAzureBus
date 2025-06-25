@@ -1,6 +1,6 @@
 # 🛰️ Prototipo de Comunicación entre Microservicios con MassTransit y Azure Service Bus
 
-Este repositorio contiene un prototipo funcional que demuestra la comunicación asincrónica entre dos microservicios utilizando **MassTransit** como biblioteca de mensajería y **Azure Service Bus** como broker de mensajes.
+Este repositorio contiene un prototipo funcional que demuestra la comunicación asincrónica entre dos microservicios utilizando **MassTransit** como biblioteca de mensajería y **Azure Service Bus** simulando un modelo de control de trafico marítimo en una torre de control.
 
 ## 🧩 Microservicios
 
