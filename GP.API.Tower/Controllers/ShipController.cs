@@ -9,11 +9,9 @@ namespace GP.API.Tower.Controllers
     public class ShipController : ControllerBase
     {
         private readonly ILogger<ShipController> _logger;
-        private readonly IMessagePublisher _shipMessagePublisher;
 
-        public ShipController(IMessagePublisher shipMessagePublisher, ILogger<ShipController> logger)
-        {
-            _shipMessagePublisher = shipMessagePublisher;
+        public ShipController(ILogger<ShipController> logger)
+        {            
             _logger = logger;
         }
     }

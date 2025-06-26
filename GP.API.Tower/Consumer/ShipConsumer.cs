@@ -21,7 +21,7 @@ namespace GP.API.Tower.Consumer
 
         public async Task Consume(ConsumeContext<ShipPositionUpdated> context)
         {
-            _logger.LogInformation("Received ship message: {@PersonMessage}", context.Message);
+            _logger.LogInformation("Received ship message: {@ShipPositionUpdated}", context.Message);
 
             var shipPositionUpdatedDao = new ShipPositionUpdatedDao()
             {
