@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GP.LIB.Messages", "GP.LIB.M
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GP.MSG.MassTransitAzureBus", "GP.MSG.MassTransitAzureBus\GP.MSG.MassTransitAzureBus.csproj", "{206686E1-CB78-40DF-BA37-E594E3E08449}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GP.LIB.Messages.Test", "GP.LIB.Messages.Test\GP.LIB.Messages.Test.csproj", "{417BA44B-F297-478C-8D01-45753C4102D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GP.APP.Messages.Test", "GP.APP.Messages.Test\GP.APP.Messages.Test.csproj", "{417BA44B-F297-478C-8D01-45753C4102D7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GP.API.Ship", "GP.API.Ship\GP.API.Ship.csproj", "{D764707C-F633-4580-B6D8-C2476C531610}"
 EndProject

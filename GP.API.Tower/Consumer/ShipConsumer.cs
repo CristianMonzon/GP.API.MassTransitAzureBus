@@ -1,7 +1,5 @@
 ﻿using GP.API.Tower.Services;
 using GP.LIB.Messages.Dto;
-using GP.LIB.Messages.Interface;
-using GP.MSG.MassTransitAzureBus;
 using GP.MSG.MassTransitAzureBus.Ship;
 using MassTransit;
 

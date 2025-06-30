@@ -27,10 +27,9 @@ namespace GP.API.Ship.Controllers
         ///   POST /api/v1/Ship/ShipPositionUpdated
         /// </remarks>
         [HttpPost("ShipPositionUpdated")]
-
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-
+        [MapToApiVersion("1")]
         public async Task<IActionResult> Post([FromBody] ShipPositionUpdated message)
         {
             _logger.LogInformation("Received ship message: {@ShipPositionUpdated}", message);

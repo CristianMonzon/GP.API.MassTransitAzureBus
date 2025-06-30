@@ -1,9 +1,12 @@
 using GP.API.Tower.Consumer;
+using GP.API.Tower.Model;
+using GP.API.Tower.Repository;
 using GP.API.Tower.Services;
 using GP.API.Tower.Services.Implementation;
 using GP.LIB.Messages.Implementation;
 using GP.LIB.Messages.Interface;
 using MassTransit;
+using Microsoft.EntityFrameworkCore;
 
 var config = new ConfigurationBuilder()
  .SetBasePath(AppContext.BaseDirectory)
@@ -20,6 +23,10 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IMessagePublisher, MessagePublisher>();
 builder.Services.AddScoped<IShipPositionUpdatedConsumer, ShipPositionUpdatedConsumer>();
+builder.Services.AddScoped<IShipRepository, ShipRepository>();
+builder.Services.AddScoped<IShipService, ShipService>();
+
+
 
 builder.Services.AddMassTransit(x =>
 {
@@ -37,7 +44,11 @@ builder.Services.AddMassTransit(x =>
 });
 
 // Pour démarrer le bus automatiquement
-builder.Services.AddMassTransitHostedService(); 
+builder.Services.AddMassTransitHostedService();
+
+var connectionString = config.GetConnectionString("DefaultConnection");
+
+builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString,ServerVersion.AutoDetect(connectionString)));
 
 var app = builder.Build();
 

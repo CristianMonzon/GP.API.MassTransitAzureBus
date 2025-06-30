@@ -4,8 +4,9 @@ using Microsoft.Extensions.Logging;
 using NSubstitute;
 using GP.LIB.Messages.Interface;
 using GP.LIB.Messages.Implementation;
+using NSubstitute.Exceptions;
 
-namespace GP.API.Tests
+namespace GP.APP.Messages.Tests
 {
     public class ShipMessagePublisherTests
     {
@@ -24,7 +25,7 @@ namespace GP.API.Tests
         public async Task PublishAsync_ShouldCallPublishOnEndpoint()
         {
             // Arrange
-            var message = new ShipMessage();            
+            var message = new ShipMessage();
 
             // Act
             await publisher.PublishAsync(message);

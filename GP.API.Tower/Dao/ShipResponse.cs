@@ -1,14 +1,15 @@
-﻿
-namespace GP.MSG.MassTransitAzureBus
+﻿namespace GP.API.Tower.Dao
 {
-    public class ShipMessage
+    public class ShipCreateOrUpdateResponse
     {
         public string MMSI { get; set; } = null!;
         public string ShipName { get; set; } = null!;
         public decimal Draught { get; set; }
         public decimal Length { get; set; }
-        public string Origin { get; set; } = null!;
         public string Flag { get; set; } = null!;
         public DateTimeOffset? BuildingDate { get; set; }
+        public DateTimeOffset CreationDate { get; set; }
+        public DateTimeOffset? ModificationDate { get; set; }
     }
+
 }
