@@ -1,10 +1,8 @@
-﻿using GP.API.Tower.Model;
-
-namespace GP.API.Tower.Dao
+﻿namespace GP.API.Ship.Dao
 {
     public static class ShipExtension
     {
-        public static ShipDao ToDao(this Ship ship)
+        public static ShipDao ToDao(this GP.API.Model.Ship ship)
         {
             return new ShipDao
             {
@@ -19,9 +17,9 @@ namespace GP.API.Tower.Dao
             };
         }
 
-        public static Ship ToShip(this ShipDao shipdao)
+        public static GP.API.Model.Ship ToShip(this ShipDao shipdao)
         {
-            return new Ship
+            return new GP.API.Model.Ship
             {
                 MMSI = shipdao.MMSI,
                 BuildingDate = shipdao.BuildingDate,

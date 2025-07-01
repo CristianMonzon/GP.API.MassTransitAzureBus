@@ -1,6 +1,7 @@
 using GP.API.Tower.Consumer;
 using GP.API.Tower.Model;
 using GP.API.Tower.Repository;
+using GP.API.Tower.Repository.Implementation;
 using GP.API.Tower.Services;
 using GP.API.Tower.Services.Implementation;
 using GP.LIB.Messages.Implementation;
@@ -23,9 +24,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IMessagePublisher, MessagePublisher>();
 builder.Services.AddScoped<IShipPositionUpdatedConsumer, ShipPositionUpdatedConsumer>();
-builder.Services.AddScoped<IShipRepository, ShipRepository>();
-builder.Services.AddScoped<IShipService, ShipService>();
-
+builder.Services.AddScoped<IShipPositionRepository, ShipPositionRepository>();
 
 
 builder.Services.AddMassTransit(x =>
@@ -47,8 +46,7 @@ builder.Services.AddMassTransit(x =>
 builder.Services.AddMassTransitHostedService();
 
 var connectionString = config.GetConnectionString("DefaultConnection");
-
-builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString,ServerVersion.AutoDetect(connectionString)));
+builder.Services.AddDbContext<TowerDbContext>(options => options.UseMySql(connectionString,ServerVersion.AutoDetect(connectionString)));
 
 var app = builder.Build();
 

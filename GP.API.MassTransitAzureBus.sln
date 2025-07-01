@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GP.API.Ship", "GP.API.Ship\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GP.API.Tower", "GP.API.Tower\GP.API.Tower.csproj", "{ABC3F708-EF73-DDE7-476F-5871075B5D0C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GP.LIB.Model", "GP.LIB.Model\GP.LIB.Model.csproj", "{910FFF4F-A443-4D57-9CF5-390C2729B51D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{ABC3F708-EF73-DDE7-476F-5871075B5D0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABC3F708-EF73-DDE7-476F-5871075B5D0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABC3F708-EF73-DDE7-476F-5871075B5D0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{910FFF4F-A443-4D57-9CF5-390C2729B51D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{910FFF4F-A443-4D57-9CF5-390C2729B51D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{910FFF4F-A443-4D57-9CF5-390C2729B51D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{910FFF4F-A443-4D57-9CF5-390C2729B51D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

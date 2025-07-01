@@ -1,6 +1,6 @@
 ﻿namespace GP.MSG.MassTransitAzureBus.Ship
 {
-    public record ShipPositionUpdated
+    public record ShipPositionUpdatedMessage
     {
         /// <summary>
         /// Maritime Mobile Service Identity

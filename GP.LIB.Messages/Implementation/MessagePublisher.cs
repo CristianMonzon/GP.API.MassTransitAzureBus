@@ -20,16 +20,16 @@ namespace GP.LIB.Messages.Implementation
 
         public async Task PublishAsync(ShipMessage message)
         {
-            _logger.LogInformation("Publishing person message...");
+            _logger.LogInformation("Publishing Ship Message message...");
             await _publishEndpoint.Publish(message);
-            _logger.LogInformation("Message published.");
+            _logger.LogInformation("Ship Message Message published.");
         }
 
-        public async Task PublishAsync(ShipPositionUpdated message)
+        public async Task PublishAsync(ShipPositionUpdatedMessage message)
         {
-            _logger.LogInformation("Publishing person message...");
+            _logger.LogInformation("Publishing Ship Position Updated Message...");
             await _publishEndpoint.Publish(message);
-            _logger.LogInformation("Message published.");
+            _logger.LogInformation("Ship Position Updated Message published.");
         }
     }
 }

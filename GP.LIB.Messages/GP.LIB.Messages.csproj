@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Dto\PersonMessageDto.cs" />
     <Compile Remove="Implementation\PersonMessageConsumer.cs" />
     <Compile Remove="Implementation\PersonMessagePublisher .cs" />
     <Compile Remove="Interface\IPersonMessageConsumer.cs" />

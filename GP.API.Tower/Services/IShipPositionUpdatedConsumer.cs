@@ -1,5 +1,4 @@
-﻿using GP.LIB.Messages.Dto;
-using GP.MSG.MassTransitAzureBus.Ship;
+﻿using GP.API.Tower.Dao;
 
 namespace GP.API.Tower.Services
 {

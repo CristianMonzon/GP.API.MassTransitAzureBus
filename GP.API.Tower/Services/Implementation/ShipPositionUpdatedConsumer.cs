@@ -1,22 +1,27 @@
-﻿using GP.LIB.Messages.Dto;
-using GP.MSG.MassTransitAzureBus.Ship;
+﻿using GP.API.Tower.Dao;
+using GP.API.Tower.Repository;
+
 
 namespace GP.API.Tower.Services.Implementation
 {
     public class ShipPositionUpdatedConsumer : IShipPositionUpdatedConsumer
     {
 
+        private readonly IShipPositionRepository _shipPositionRepository;
         private readonly ILogger<ShipPositionUpdatedConsumer> _logger;
 
-        public ShipPositionUpdatedConsumer(ILogger<ShipPositionUpdatedConsumer> logger)
+        public ShipPositionUpdatedConsumer(IShipPositionRepository shipPositionRepository,ILogger<ShipPositionUpdatedConsumer> logger)
         {
+            _shipPositionRepository = shipPositionRepository;
             _logger = logger;
         }
 
-        public Task ConsumerAsync(ShipPositionUpdatedDao shipPositionUpdatedDao)
+        public async Task ConsumerAsync(ShipPositionUpdatedDao shipPositionUpdatedDao)
         {
+            await _shipPositionRepository.CreateShipPosition(shipPositionUpdatedDao);
             _logger.LogInformation("Consume message shipPositionUpdated");
-            return Task.CompletedTask;
+
+            
         }
     }
 }

@@ -1,15 +1,14 @@
-﻿namespace GP.LIB.Messages.Dto
+﻿namespace GP.API.Ship.Dao
 {
-    public class ShipPositionUpdatedDao
+    public class ShipPositionDao
     {
-        /// <summary>
-        /// Maritime Mobile Service Identity
-        /// </summary>
+        public int Id { get; set; }
         public string MMSI { get; set; } = null!;
+        public DateTimeOffset EventDate { get; set; }
         public double Speed { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public int Heading { get; set; }
-        public DateTimeOffset EventDate { get; set; }
+        public DateTimeOffset CreationDate { get; set; }
     }
 }

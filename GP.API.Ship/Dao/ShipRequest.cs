@@ -1,4 +1,4 @@
-﻿namespace GP.API.Tower.Dao
+﻿namespace GP.API.Ship.Dao
 {
     public class ShipRequest
     {

@@ -1,10 +1,11 @@
-﻿
-using GP.MSG.MassTransitAzureBus;
+﻿using GP.API.Ship.Dao;
+using GP.LIB.Messages.Implementation;
 
 namespace GP.API.Ship.Services
 {
     public interface IShipService
     {
-        Task UpdatePositionAsync(string mmsi, double lat, double lon, double speed, int heading);
+        Task<IEnumerable<ShipDao>> GetAllAsync();
+        Task<Result<ShipDao>> CreateOrUpdateShip(ShipDao shipDao);        
     }
 }

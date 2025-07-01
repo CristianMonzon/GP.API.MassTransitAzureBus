@@ -1,24 +1,25 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace GP.API.Tower.Model
+namespace GP.API.Model
 {
 
     public class AppDbContext : DbContext
     {
         public DbSet<Ship> Ships { get; set; }
 
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+        public DbSet<ShipPosition> ShipPositions { get; set; }
+
+        public AppDbContext(DbContextOptions options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
+
+            modelBuilder.Entity<ShipPosition>()
+                .HasOne(s => s.Ship)
+                .WithMany(sp => sp.ShipPositions)
+                .HasForeignKey(fk => fk.MMSI);
         }
     }
-
 }

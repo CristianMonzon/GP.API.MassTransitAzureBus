@@ -6,6 +6,6 @@ namespace GP.LIB.Messages.Interface
     public interface IMessagePublisher
     {
         Task PublishAsync(ShipMessage message);
-        Task PublishAsync(ShipPositionUpdated message);
+        Task PublishAsync(ShipPositionUpdatedMessage message);
     }
 }

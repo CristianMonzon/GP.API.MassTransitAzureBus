@@ -1,12 +1,11 @@
-﻿using GP.API.Tower.Services;
-using GP.LIB.Messages.Dto;
+﻿using GP.API.Tower.Dao;
+using GP.API.Tower.Services;
 using GP.MSG.MassTransitAzureBus.Ship;
 using MassTransit;
 
-
 namespace GP.API.Tower.Consumer
 {
-    public class ShipConsumer : IConsumer<ShipPositionUpdated>
+    public class ShipConsumer : IConsumer<ShipPositionUpdatedMessage>
     {
         private readonly ILogger<ShipConsumer> _logger;
         private readonly IShipPositionUpdatedConsumer _shipMessageConsumer;
@@ -17,20 +16,26 @@ namespace GP.API.Tower.Consumer
             _logger = logger;
         }
 
-        public async Task Consume(ConsumeContext<ShipPositionUpdated> context)
+        public async Task Consume(ConsumeContext<ShipPositionUpdatedMessage> context)
         {
-            _logger.LogInformation("Received ship message: {@ShipPositionUpdated}", context.Message);
-
-            var shipPositionUpdatedDao = new ShipPositionUpdatedDao()
+            _logger.LogInformation("Receiving ship message: {@ShipPositionUpdated}", context.Message);
+            try
             {
-                Heading = context.Message.Heading,
-                Latitude = context.Message.Latitude,
-                Longitude = context.Message.Longitude,
-                MMSI = context.Message.MMSI,
-                Speed = context.Message.Speed
-            };
-            
-            await _shipMessageConsumer.ConsumerAsync(shipPositionUpdatedDao);
+                var shipPositionUpdatedDao = new ShipPositionUpdatedDao()
+                {
+                    MMSI = context.Message.MMSI,
+                    Heading = context.Message.Heading,
+                    Latitude = context.Message.Latitude,
+                    Longitude = context.Message.Longitude,
+                    Speed = context.Message.Speed
+                };
+                await _shipMessageConsumer.ConsumerAsync(shipPositionUpdatedDao);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Error receiving Ship Position Updated Message: {context.Message} * Exception : {ex.Message}");
+                throw;
+            }
         }
     }
 }

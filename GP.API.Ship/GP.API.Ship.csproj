@@ -8,15 +8,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Repository\IShipPositionRepository.cs" />
+    <Compile Remove="Repository\ShipPositionRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MassTransit.Azure.ServiceBus.Core" Version="8.5.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.1.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.6" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="9.0.6" />
+	  <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="9.0.0-preview.3.efcore.9.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\GP.LIB.Messages\GP.LIB.Messages.csproj" />
+    <ProjectReference Include="..\GP.LIB.Model\GP.LIB.Model.csproj" />
     <ProjectReference Include="..\GP.MSG.MassTransitAzureBus\GP.MSG.MassTransitAzureBus.csproj" />
   </ItemGroup>
 

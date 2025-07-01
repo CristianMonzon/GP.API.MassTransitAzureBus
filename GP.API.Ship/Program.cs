@@ -1,9 +1,12 @@
+using GP.API.Ship.Model;
+using GP.API.Ship.Repository;
+using GP.API.Ship.Repository.Implementation;
 using GP.API.Ship.Services;
 using GP.API.Ship.Services.Implementation;
 using GP.LIB.Messages.Implementation;
 using GP.LIB.Messages.Interface;
-using GP.MSG.MassTransitAzureBus.Ship;
 using MassTransit;
+using Microsoft.EntityFrameworkCore;
 
 var config = new ConfigurationBuilder()
  .SetBasePath(AppContext.BaseDirectory)
@@ -11,7 +14,6 @@ var config = new ConfigurationBuilder()
  .AddUserSecrets<Program>()
  .Build();
 string azureServiceBusConnectionString = config["AzureServiceBus:ConnnectionString"];
-
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +23,9 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<ILogger<MessagePublisher>, Logger<MessagePublisher>>();
 builder.Services.AddScoped<IMessagePublisher, MessagePublisher>();
+
+builder.Services.AddScoped<IShipPositionService, ShipPositionService>();
+builder.Services.AddScoped<IShipRepository, ShipRepository>();
 builder.Services.AddScoped<IShipService, ShipService>();
 
 builder.Services.AddMassTransit(x =>
@@ -33,6 +38,9 @@ builder.Services.AddMassTransit(x =>
 
 // Pour démarrer le bus automatiquement
 builder.Services.AddMassTransitHostedService();
+
+var connectionString = config.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<ShipDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 var app = builder.Build();
 

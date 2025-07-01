@@ -1,12 +1,17 @@
-﻿using GP.API.Tower.Dao;
-using GP.API.Tower.Model;
+﻿using GP.API.Ship.Dao;
+using GP.API.Ship.Model;
 using Microsoft.EntityFrameworkCore;
 
-namespace GP.API.Tower.Repository
+namespace GP.API.Ship.Repository.Implementation
 {
-    public class ShipRepository(AppDbContext appDbContext) : IShipRepository
+    public class ShipRepository(ShipDbContext appDbContext) : IShipRepository
     {
 
+        /// <summary>
+        /// Creates the or update ship.
+        /// </summary>
+        /// <param name="shipDao">The ship DAO.</param>
+        /// <returns></returns>
         public async Task<ShipDao> CreateOrUpdateShip(ShipDao shipDao)
         {
             var existingShip = await appDbContext.Ships.FirstOrDefaultAsync(s => s.MMSI == shipDao.MMSI);
@@ -36,6 +41,10 @@ namespace GP.API.Tower.Repository
             }
         }
 
+        /// <summary>
+        /// Gets all asynchronous.
+        /// </summary>
+        /// <returns></returns>
         public async Task<IEnumerable<ShipDao>> GetAllAsync()
         {
             return await appDbContext.Ships.Select(c => c.ToDao()).ToListAsync();
