@@ -70,5 +70,15 @@ namespace GP.API.Tower.Services.Implementation
             }
             return result;
         }
+
+        /// <summary>
+        /// Gets all asynchronous.
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="System.NotImplementedException"></exception>
+        public async Task<IEnumerable<ShipPositionUpdatedDao>> GetAllAsync()
+        {
+            return await _shipPositionRepository.GetAllAsync();
+        }
     }
 }

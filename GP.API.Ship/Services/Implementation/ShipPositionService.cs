@@ -34,7 +34,7 @@ namespace GP.API.Ship.Services.Implementation
                     Latitude = shipPositionDao.Longitude,
                     Longitude = shipPositionDao.Longitude,
                     Heading = shipPositionDao.Heading,
-                    EventDate = new DateTimeOffset()
+                    EventDate = shipPositionDao.EventDate
                 };
 
                 await _publishEndpoint.PublishAsync(message);

@@ -36,6 +36,7 @@ namespace GP.API.Ship.Controllers
         /// <returns></returns>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [MapToApiVersion("1")]
         public async Task<ActionResult<IEnumerable<GP.API.Ship.Dao.ShipDao>>> GetShips()
         {
@@ -94,7 +95,7 @@ namespace GP.API.Ship.Controllers
                 Latitude = message.Latitude,
                 Longitude = message.Longitude,
                 Heading = message.Heading,
-                EventDate = new DateTimeOffset()
+                EventDate = message.EventDate
             };
 
             await _shipPositionService.RegisterShipPositionAsync(shipPositionDao);

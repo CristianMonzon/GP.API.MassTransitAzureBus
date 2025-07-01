@@ -25,7 +25,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IMessagePublisher, MessagePublisher>();
 builder.Services.AddScoped<IShipPositionUpdatedConsumer, ShipPositionUpdatedConsumer>();
 builder.Services.AddScoped<IShipPositionRepository, ShipPositionRepository>();
-
+builder.Services.AddScoped<IShipPositionService, ShipPositionService>();
 
 builder.Services.AddMassTransit(x =>
 {

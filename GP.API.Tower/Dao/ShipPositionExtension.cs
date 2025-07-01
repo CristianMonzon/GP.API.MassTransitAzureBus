@@ -8,12 +8,29 @@ namespace GP.API.Tower.Dao
         {
             return new ShipPositionUpdatedDao
             {
+                Id = ship.Id,
                 MMSI = ship.MMSI,
                 Speed = ship.Speed,
                 Longitude = ship.Longitude,
                 Latitude = ship.Latitude,
                 EventDate = ship.EventDate,
-                Heading = ship.Heading                
+                Heading = ship.Heading,
+                CreationDate = ship.CreationDate                
+            };
+        }
+
+        public static ShipPositionResponse ToResponse(this ShipPositionUpdatedDao ship)
+        {
+            return new ShipPositionResponse
+            {
+                Id = ship.Id,
+                MMSI = ship.MMSI,
+                Speed = ship.Speed,
+                Longitude = ship.Longitude,
+                Latitude = ship.Latitude,
+                EventDate = ship.EventDate,
+                Heading = ship.Heading,
+                CreationDate = ship.CreationDate,
             };
         }
 

@@ -1,9 +1,10 @@
 ﻿using GP.API.Tower.Dao;
 using GP.API.Tower.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace GP.API.Tower.Repository.Implementation
 {
-    public class ShipPositionRepository(TowerDbContext shipDbContext) : IShipPositionRepository
+    public class ShipPositionRepository(TowerDbContext appDbContext) : IShipPositionRepository
     {
         /// <summary>
         /// Creates the ship position.
@@ -13,9 +14,18 @@ namespace GP.API.Tower.Repository.Implementation
         public async Task<ShipPositionUpdatedDao> CreateShipPosition(ShipPositionUpdatedDao shipPositionUpdatedDao)
         {
             var shipPosition = shipPositionUpdatedDao.ToShipPosition();
-            shipDbContext.Add(shipPosition);
-            await shipDbContext.SaveChangesAsync();
+            appDbContext.Add(shipPosition);
+            await appDbContext.SaveChangesAsync();
             return shipPositionUpdatedDao;
+        }
+
+        /// <summary>
+        /// Gets all asynchronous.
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IEnumerable<ShipPositionUpdatedDao>> GetAllAsync()
+        {
+            return await appDbContext.ShipPositions.Select(c => c.ToDao()).ToListAsync();
         }
     }
 }

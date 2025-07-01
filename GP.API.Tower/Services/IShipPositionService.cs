@@ -7,5 +7,6 @@ namespace GP.API.Tower.Services
     public interface IShipPositionService
     {
         Task<Result<ShipPositionUpdatedDao>> ConsumeShipPositionAsync(string mmsi, double lat, double lon, double speed, int heading);
+        Task<IEnumerable<ShipPositionUpdatedDao>> GetAllAsync();
     }
 }

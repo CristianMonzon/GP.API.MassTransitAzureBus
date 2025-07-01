@@ -9,7 +9,6 @@ namespace GP.API.Tower.Consumer
     {
         private readonly ILogger<ShipConsumer> _logger;
         private readonly IShipPositionUpdatedConsumer _shipMessageConsumer;
-
         public ShipConsumer(IShipPositionUpdatedConsumer shipMessageConsumer, ILogger<ShipConsumer> logger)
         {
             _shipMessageConsumer = shipMessageConsumer;
@@ -27,7 +26,8 @@ namespace GP.API.Tower.Consumer
                     Heading = context.Message.Heading,
                     Latitude = context.Message.Latitude,
                     Longitude = context.Message.Longitude,
-                    Speed = context.Message.Speed
+                    Speed = context.Message.Speed,
+                    EventDate = context.Message.EventDate
                 };
                 await _shipMessageConsumer.ConsumerAsync(shipPositionUpdatedDao);
             }
